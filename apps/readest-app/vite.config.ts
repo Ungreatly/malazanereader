@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [vinext()],
   resolve: {
     alias: {
-      '@pdfjs': path.resolve('public/vendor/pdfjs'),
+      // Updated to point to the installed node_modules package instead of the empty public folder
+      '@pdfjs': path.resolve(__dirname, 'node_modules/pdfjs-dist/build'),
       '@simplecc': path.resolve('public/vendor/simplecc'),
     },
   },
