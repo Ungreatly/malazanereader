@@ -5,7 +5,7 @@ import { PiHighlighterFill } from 'react-icons/pi';
 import { FaWikipediaW } from 'react-icons/fa';
 import { BsPencilSquare } from 'react-icons/bs';
 import { BsTranslate } from 'react-icons/bs';
-import { TbHexagonLetterD } from 'react-icons/tb';
+import { TbHexagonLetterD, TbHexagonLetterM } from 'react-icons/tb';
 import { FaHeadphones } from 'react-icons/fa6';
 import { IoIosBuild } from 'react-icons/io';
 import { AnnotationToolType } from '@/types/annotator';
@@ -62,6 +62,13 @@ export const annotationToolButtons = createAnnotationToolButtons([
     label: _('Dictionary'),
     tooltip: _('Look up text in dictionary after selection'),
     Icon: TbHexagonLetterD,
+    quickAction: true,
+  },
+  {
+    type: 'encyclopedia',
+    label: _('Malazan Encyclopedia'),
+    tooltip: _('Look up text in Malazan Encyclopedia after selection'),
+    Icon: TbHexagonLetterM,
     quickAction: true,
   },
   {

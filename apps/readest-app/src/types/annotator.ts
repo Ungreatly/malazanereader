@@ -4,6 +4,7 @@ export type AnnotationToolType =
   | 'annotate'
   | 'search'
   | 'dictionary'
+  | 'encyclopedia'
   | 'wikipedia'
   | 'translate'
   | 'tts'

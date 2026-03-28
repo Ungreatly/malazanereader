@@ -359,4 +359,4 @@ We would also like to thank the [Web Chinese Fonts Plan](https://chinese-font.ne
 [link-deepwiki]: https://deepwiki.com/readest/readest
 [link-locales]: https://github.com/readest/readest/tree/main/apps/readest-app/public/locales
 [link-kosync-wiki]: https://github.com/readest/readest/wiki/Sync-with-Koreader-devices
-[link-reddit]: https://reddit.com/r/readest/
+[link-reddit]: https://reddit.com/r/readest/ '# malazanreader'

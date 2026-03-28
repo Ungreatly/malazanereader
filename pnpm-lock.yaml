@@ -30,6 +30,10 @@ patchedDependencies:
 importers:
 
   .:
+    dependencies:
+      pdfjs-dist:
+        specifier: ^5.4.530
+        version: 5.4.530
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.1
@@ -3672,6 +3676,12 @@ packages:
     resolution: {integrity: sha512-WwgIlXeZ2/RKmQV/pBoduYIiY1t+gAG4zKyza6vq+ubYEV1eV9M/Ag0qxd3w8hVVbnIh3AFv/XA6NGU5fjWIww==}
     cpu: [arm64]
     os: [darwin]
+
+  '@tursodatabase/database-linux-arm64-gnu@0.5.0':
+    resolution: {integrity: sha512-ifhBSd+o0ZGUvbOJUVZHEWq+soY1MQcWTRHR4BF8gKo4VG+83fWfNx9rY6Ag5LK/dMmwLvFE4i6els+wFuHsqg==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
 
   '@tursodatabase/database-linux-x64-gnu@0.5.0':
     resolution: {integrity: sha512-m+th09HazKbuQwaj9C2hPBE/5TWvBn6bQ2/YghrXog+mvmjeq1W/GXEpUP0BDUCiQwj//2p30WaNvicLe2VMfg==}
@@ -13157,6 +13167,9 @@ snapshots:
   '@tursodatabase/database-darwin-arm64@0.5.0':
     optional: true
 
+  '@tursodatabase/database-linux-arm64-gnu@0.5.0':
+    optional: true
+
   '@tursodatabase/database-linux-x64-gnu@0.5.0':
     optional: true
 
@@ -13177,6 +13190,7 @@ snapshots:
       '@tursodatabase/database-common': 0.5.0
     optionalDependencies:
       '@tursodatabase/database-darwin-arm64': 0.5.0
+      '@tursodatabase/database-linux-arm64-gnu': 0.5.0
       '@tursodatabase/database-linux-x64-gnu': 0.5.0
       '@tursodatabase/database-win32-x64-msvc': 0.5.0
 

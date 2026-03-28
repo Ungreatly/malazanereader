@@ -35,6 +35,7 @@ import { annotationToolButtons } from './AnnotationTools';
 import AnnotationRangeEditor from './AnnotationRangeEditor';
 import AnnotationPopup from './AnnotationPopup';
 import WiktionaryPopup from './WiktionaryPopup';
+import EncyclopediaPopup from './EncyclopediaPopup';
 import WikipediaPopup from './WikipediaPopup';
 import TranslatorPopup from './TranslatorPopup';
 import useShortcuts from '@/hooks/useShortcuts';
@@ -67,6 +68,7 @@ const Annotator: React.FC<{ bookKey: string }> = ({ bookKey }) => {
   const [selection, setSelection] = useState<TextSelection | null>(null);
   const [showAnnotPopup, setShowAnnotPopup] = useState(false);
   const [showWiktionaryPopup, setShowWiktionaryPopup] = useState(false);
+  const [showEncyclopediaPopup, setShowEncyclopediaPopup] = useState(false);
   const [showWikipediaPopup, setShowWikipediaPopup] = useState(false);
   const [showDeepLPopup, setShowDeepLPopup] = useState(false);
   const [showProofreadPopup, setShowProofreadPopup] = useState(false);
@@ -97,6 +99,7 @@ const Annotator: React.FC<{ bookKey: string }> = ({ bookKey }) => {
   const showingPopup =
     showAnnotPopup ||
     showWiktionaryPopup ||
+    showEncyclopediaPopup ||
     showWikipediaPopup ||
     showDeepLPopup ||
     showProofreadPopup;
@@ -198,6 +201,7 @@ const Annotator: React.FC<{ bookKey: string }> = ({ bookKey }) => {
       setSelection(null);
       setShowAnnotPopup(false);
       setShowWiktionaryPopup(false);
+      setShowEncyclopediaPopup(false);
       setShowWikipediaPopup(false);
       setShowDeepLPopup(false);
       setShowProofreadPopup(false);
@@ -503,6 +507,9 @@ const Annotator: React.FC<{ bookKey: string }> = ({ bookKey }) => {
       case 'dictionary':
         handleDictionary();
         break;
+      case 'encyclopedia':
+        handleEncyclopedia();
+        break;
       case 'wikipedia':
         handleWikipedia();
         break;
@@ -753,6 +760,12 @@ const Annotator: React.FC<{ bookKey: string }> = ({ bookKey }) => {
     setShowWiktionaryPopup(true);
   };
 
+  const handleEncyclopedia = () => {
+    if (!selection || !selection.text) return;
+    setShowAnnotPopup(false);
+    setShowEncyclopediaPopup(true);
+  };
+
   const handleWikipedia = () => {
     if (!selection || !selection.text) return;
     setShowAnnotPopup(false);
@@ -929,6 +942,8 @@ const Annotator: React.FC<{ bookKey: string }> = ({ bookKey }) => {
         };
       case 'dictionary':
         return { tooltipText: _(label), Icon, onClick: handleDictionary };
+      case 'encyclopedia':
+        return { tooltipText: _(label), Icon, onClick: handleEncyclopedia };
       case 'wikipedia':
         return { tooltipText: _(label), Icon, onClick: handleWikipedia };
       case 'translate':
@@ -957,6 +972,16 @@ const Annotator: React.FC<{ bookKey: string }> = ({ bookKey }) => {
         <WiktionaryPopup
           word={selection?.text as string}
           lang={bookData.bookDoc?.metadata.language as string}
+          position={dictPopupPosition}
+          trianglePosition={trianglePosition}
+          popupWidth={dictPopupWidth}
+          popupHeight={dictPopupHeight}
+          onDismiss={handleDismissPopupAndSelection}
+        />
+      )}
+      {showEncyclopediaPopup && trianglePosition && dictPopupPosition && (
+        <EncyclopediaPopup
+          text={selection?.text as string}
           position={dictPopupPosition}
           trianglePosition={trianglePosition}
           popupWidth={dictPopupWidth}
